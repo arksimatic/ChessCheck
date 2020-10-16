@@ -1,0 +1,11 @@
+C:\Users\admin\source\repos\ChessCheck\ChessCheck\bin\Debug\netcoreapp3.1\ChessCheck.exe
+C:\Users\admin\source\repos\ChessCheck\ChessCheck\bin\Debug\netcoreapp3.1\ChessCheck.deps.json
+C:\Users\admin\source\repos\ChessCheck\ChessCheck\bin\Debug\netcoreapp3.1\ChessCheck.runtimeconfig.json
+C:\Users\admin\source\repos\ChessCheck\ChessCheck\bin\Debug\netcoreapp3.1\ChessCheck.runtimeconfig.dev.json
+C:\Users\admin\source\repos\ChessCheck\ChessCheck\bin\Debug\netcoreapp3.1\ChessCheck.dll
+C:\Users\admin\source\repos\ChessCheck\ChessCheck\bin\Debug\netcoreapp3.1\ChessCheck.pdb
+C:\Users\admin\source\repos\ChessCheck\ChessCheck\obj\Debug\netcoreapp3.1\ChessCheck.csprojAssemblyReference.cache
+C:\Users\admin\source\repos\ChessCheck\ChessCheck\obj\Debug\netcoreapp3.1\ChessCheck.AssemblyInfoInputs.cache
+C:\Users\admin\source\repos\ChessCheck\ChessCheck\obj\Debug\netcoreapp3.1\ChessCheck.AssemblyInfo.cs
+C:\Users\admin\source\repos\ChessCheck\ChessCheck\obj\Debug\netcoreapp3.1\ChessCheck.dll
+C:\Users\admin\source\repos\ChessCheck\ChessCheck\obj\Debug\netcoreapp3.1\ChessCheck.pdb
