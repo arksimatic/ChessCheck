@@ -221,7 +221,7 @@ namespace ChessCheck
                                 else
                                 {
                                     allPossibleMoves.Add(new Move(piece, potentialPosition));
-                                    break; //break loop, right?
+                                    break;
                                 }
                             }
                             for (int y = piece.position.y - 1; y >= 1; y--)
@@ -232,7 +232,7 @@ namespace ChessCheck
                                 else
                                 {
                                     allPossibleMoves.Add(new Move(piece, potentialPosition));
-                                    break; //break loop, right?
+                                    break;
                                 }
                             }
                             break;
@@ -246,22 +246,8 @@ namespace ChessCheck
         {
             Piece? attackedPiece = ReturnPieceByPosition(move.endPosition);
             if (attackedPiece != null && attackedPiece.color == performingColor) return false; //WARING be careful whether the first statement is always executed before the second one, possible crash
-            else
-            {
-                //Board hipoteticalBoard = this; //WARING is this reference or copy?
+            else pieces.Remove(attackedPiece);
 
-                //if (attackedPiece != null) hipoteticalBoard.pieces.Remove(attackedPiece);
-                //int index = hipoteticalBoard.pieces.IndexOf(move.piece);
-                //hipoteticalBoard.pieces[index].position = move.endPosition;
-
-                //if (hipoteticalBoard.IsCheck(performingColor)) return false;
-                //else
-                //{
-                    pieces.Remove(attackedPiece);
-                //}
-
-            }
-            //maybe check whether the position is valid
             if (!move.endPosition.IsValid()) throw new Exception("in tryPerformMove the move is invalid. Are you missing input verification senpai?");
             int index = pieces.IndexOf(move.piece);
             pieces[index].position = move.endPosition;
