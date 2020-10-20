@@ -15,7 +15,7 @@ namespace ChessCheck
             pieces = new List<Piece>();
         }
 
-        public Board BasicSetup()
+        public Board ExampleSetup()
         {
             //kings MUST BE created because otherwise WhiteKing and BlackKing will cause exception
             pieces.Add(new King(new Position(5, 4), Color.Black));
@@ -44,6 +44,96 @@ namespace ChessCheck
             #endregion
 
             return this;
+        }
+
+        public Board BasicSetup()
+        {
+            AddKing(Color.White);
+            AddKing(Color.Black);
+
+            while (true)
+            {
+                Console.Write("Dodac wieze? (y/n)");
+                String choice = Console.ReadLine();
+
+                if (choice == "n" || choice == "N") break;
+
+                if (choice == "y" || choice == "Y")
+                {
+                    while (true)
+                    {
+                        Console.Write("Podaj kolor wiezy: (w/b)");
+                        String color = Console.ReadLine();
+
+                        if (color == "w" || color == "W")
+                        {
+                            AddRook(Color.White);
+                            break;
+                        }
+
+                        if (color == "b" || color == "B")
+                        {
+                            AddRook(Color.Black);
+                            break;
+                        }
+                    }
+                }
+            }
+            return this;
+        }
+
+        public void AddKing(Color color)
+        {
+            while (true)
+            {
+                Console.Write($"Podaj pozycje krola o kolorze {color}: ");
+                string consoleNotationPosition = Console.ReadLine();
+                if (consoleNotationPosition.Length == 2)
+                {
+                    int? x = ToProgramNotation.FromX(consoleNotationPosition[0]);
+                    int? y = ToProgramNotation.FromY(consoleNotationPosition[1]);
+                    List<Position> attackedPositions = AllAttackedPositions(ColorControl.OppositeColor(color));
+
+                    if (x != null && y != null)
+                    {
+                        Position position = new Position(x.Value, y.Value);
+                        if (ReturnPieceByPosition(position) == null && !attackedPositions.Contains(position))
+                        {
+                            pieces.Add(new King(new Position(x.Value, y.Value), color));
+                            break;
+                        }
+
+                    }
+                }
+            }
+        }
+
+        public void AddRook(Color color)
+        {
+            while (true)
+            {
+                Console.Write($"Podaj pozycje wiezy o kolorze {color}: ");
+                string consoleNotationPosition = Console.ReadLine();
+
+                if (consoleNotationPosition.Length == 2)
+                {
+                    int? x = ToProgramNotation.FromX(consoleNotationPosition[0]);
+                    int? y = ToProgramNotation.FromY(consoleNotationPosition[1]);
+                    Piece rook;
+                    if (x != null && y != null)
+                    {
+                        rook = new Rook(new Position(x.Value, y.Value), color);
+                        Board hipoteticalBoard = this.DeepCopy();
+                        hipoteticalBoard.pieces.Add(rook);
+                        if (ReturnPieceByPosition(rook.position) == null && !hipoteticalBoard.IsCheck(ColorControl.OppositeColor(color)))
+                        {
+                            pieces.Add(rook);
+                            break;
+                        }
+                    }
+
+                }
+            }
         }
 
         public Board(List<Piece> pieces)
